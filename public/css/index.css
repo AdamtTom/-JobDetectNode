@@ -147,7 +147,7 @@ a:hover {
     a:hover,
     a.active {
         background: none;
-        color: #0082e6;
+        color: #9152f8;
     }
 
     #check:checked~ul {

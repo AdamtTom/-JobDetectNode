@@ -7,6 +7,8 @@ const axios = require('axios')
 const session = require('express-session');
 const dotenv = require("dotenv")
 dotenv.config();
+require('express-async-errors');
+
 
 // require model and load it; clear DB when server is rebooted
 const User = require('./models/user.js')
@@ -22,6 +24,12 @@ app.use(session({
         maxAge: 10800000 
     }
 }));
+
+
+function handleErr(err, req, res, next){
+    console.log(err)
+    return res.json(err)
+}
 
 function isLoggedIn(req, res, next) {
     if (req.session.isLoggedIn) {
@@ -55,10 +63,24 @@ app.get('/register', isLoggedOut, (req, res) => {
     res.sendFile(__dirname + '/html/register.html')
 })
 
-app.get('/logout', (req, res)=>{
+app.get('/logout', (req, res) =>{
     req.session.destroy();
     return res.redirect('/login')
 } )
+
+app.post('/', async (req, res) => {
+    text = ""
+    for (const property in req.body) {
+        text += req.body[property] + " "
+      }
+    response = await axios.post('http://jobdetective.pythonanywhere.com/predict', {text: text})
+    // console.log(response)
+    const {preds, probas} = response.data
+    if (preds[0] == 0)
+        res.json({fake: false, proba: Math.round(probas[0][0] * 100)})
+    else
+        res.json({fake: true, proba: Math.round(probas[0][1] * 100)})
+})
 
 app.post('/register', isLoggedOut, async (req, res) => {
     console.log(req.body)
@@ -94,6 +116,8 @@ app.get('*', (req, res) => {
     msg: 'Improper route. Check API docs plz.'
   })
 })
+
+app.use(handleErr)
 
 // Start the server
 app.listen(process.env.PORT, () => {
