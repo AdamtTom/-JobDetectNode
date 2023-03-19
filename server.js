@@ -74,7 +74,6 @@ app.post('/', async (req, res) => {
         text += req.body[property] + " "
       }
     response = await axios.post('http://jobdetective.pythonanywhere.com/predict', {text: text})
-    // console.log(response)
     const {preds, probas} = response.data
     if (preds[0] == 0)
         res.json({fake: false, proba: Math.round(probas[0][0] * 100)})
@@ -83,7 +82,6 @@ app.post('/', async (req, res) => {
 })
 
 app.post('/register', isLoggedOut, async (req, res) => {
-    console.log(req.body)
     const {name, email, password} = req.body
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
@@ -91,24 +89,20 @@ app.post('/register', isLoggedOut, async (req, res) => {
     const user = await User.create(userWithHashedPassword)
     req.session.user = user;
     req.session.isLoggedIn = true;
-    return res.redirect('/')
+    return res.json({redirect: '/'})
 })
 
 app.post('/login', isLoggedOut, async (req, res) => {
-    try {
-        const {email, password} = req.body
-        let user = await User.findOne({email:email})
-        if (!user)
-            return res.json('No user') 
-        comp = bcrypt.compare(password, user.password)
-        if (!comp)
-            return res.json('WrongPass')
-        req.session.user = user;
-        req.session.isLoggedIn = true;
-        return res.redirect('/')
-    } catch (err){
-        res.json(err)
-    }
+    const {email, password} = req.body
+    let user = await User.findOne({email:email})
+    if (!user)
+        return res.json({errMsg: 'Wrong email or password'}) 
+    comp = await bcrypt.compare(password, user.password)
+    if (!comp)
+        return res.json({errMsg: 'Wrong email or password'})
+    req.session.user = user;
+    req.session.isLoggedIn = true;
+    return res.json({redirect: '/'})
 })
 
 app.get('*', (req, res) => {
