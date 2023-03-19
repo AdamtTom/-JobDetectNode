@@ -32,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-color: mintcream">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST">
+				<form class="login100-form validate-form" name="form" id="form">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -42,28 +42,28 @@
 					</span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter name">
-						<input class="input100" type="text" required name="name" placeholder="Name">
+						<input class="input100" type="text" required name="name" placeholder="Name" id="name">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<input class="input100" required type="email" name="email" placeholder="Email">
+						<input class="input100" required type="email" name="email" placeholder="Email" id="email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" required type="password" name="password" placeholder="Password">
+						<input class="input100" required type="password" name="password" placeholder="Password" id="password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" required type="password" name="repeat-password" placeholder="Repeat password">
+						<input class="input100" required type="password" name="repeat_password" placeholder="Repeat password" id="repeat_password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
-
+					<label id="registerErrorMessage">Something went wrong</label>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button id="registerBtn" class="login100-form-btn" type="button">
 							Create Account
 						</button>
 					</div>
@@ -96,7 +96,7 @@
 <!--===============================================================================================-->
 	<script src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="/js/main.js"></script>
+	<script src="/js/register.js"></script>
 
 </body>
 </html>

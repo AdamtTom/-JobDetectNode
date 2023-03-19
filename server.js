@@ -27,8 +27,11 @@ app.use(session({
 
 
 function handleErr(err, req, res, next){
+    if (err.name == 'MongoServerError'){
+        return res.json({errMsg: 'This email is already registered to another user'})
+    }
     console.log(err)
-    return res.json(err)
+    return res.json({errMsg: String(err)})
 }
 
 function isLoggedIn(req, res, next) {

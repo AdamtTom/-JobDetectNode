@@ -42,6 +42,16 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
+#loginErrorMessage, #registerErrorMessage {
+  color: rgb(255, 94, 94);
+  font-family: Poppins-Medium;
+  font-size: 13px;
+  line-height: 1.2;
+  display: none;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
@@ -343,7 +353,7 @@ iframe {
 .contact100-form-checkbox {
   padding-left: 5px;
   padding-top: 5px;
-  padding-bottom: 35px;
+  padding-bottom: 30px;
 }
 
 .input-checkbox100 {

@@ -217,66 +217,6 @@ form {
 }
 
 /* Styling Button */
-/* button {
-    background-color: #9152f8;
-    border: 1px solid #777;
-    border-radius: 2px;
-    font-family: inherit;
-    font-size: 21px;
-    display: block;
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 20px;
-} */
-
-/* .login100-form-btn {
-    font-family: Poppins-Medium;
-    font-size: 16px;
-    color: #555555;
-    line-height: 1.2;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 120px;
-    height: 50px;
-    border-radius: 25px;
-    background: #9152f8;
-    background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
-    background: -o-linear-gradient(bottom, #7579ff, #b224ef);
-    background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
-    background: linear-gradient(bottom, #7579ff, #b224ef);
-    position: relative;
-    z-index: 1;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-}
-
-.login100-form-btn::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background-color: #fff;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-} */
-
-
 .login100-form-btn {
     font-family: Poppins-Medium;
     font-size: 16px;
@@ -300,12 +240,7 @@ form {
     background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
     background: linear-gradient(bottom, #7579ff, #b224ef);
     position: relative;
-    z-index: 1;
     align-self: center;
-    /* -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s; */
 }
 
 .login100-form-btn:hover {
@@ -403,11 +338,11 @@ body {
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #6ae785;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #6ae785;
   }
   
   input:checked + .slider:before {

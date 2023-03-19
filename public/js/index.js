@@ -1,15 +1,19 @@
 const magnify = 100; // Magnification radius in pixels
 let magnifyActive = true; // Whether magnifying lens is active or not
 const magnifier = document.querySelector('.magnifier');
+const body = document.querySelector('body');
 
 // Function to activate the magnifying lens
 function toggleMagnify() {
   if (magnifyActive){
     magnifyActive = false;
     magnifier.style.display = 'none';
+    body.style.cursor = 'auto'
+
   } else {
     magnifyActive = true;
     magnifier.style.display = 'block';
+    body.style.cursor = 'none'
   }
 }
 
