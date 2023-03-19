@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>JobDetect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+  <nav>
+    <div id="logo-container">
+      <img src="/images/download.svg" width="55px"/>
+      <label class="logo">JobDetect</label>
+    </div>
+    
+    <ul>
+      <li><a href="/">Detect</a></li>
+      <li><a href="/account">Account</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+    <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+  </nav>
+  <h1 id="title">Is this job posting <span class="highlight">Fake?</span></h1>
+
+  <!-- Create Form -->
+  <form id="form">
+    <h4 style="color: #9152f8; font-family: Poppins-Regular; margin-bottom: 3vh">Instructions: Enter the job title below and paste the entire text from the job posting in the <i>job description</i> field. Only fill the other fields if the information is not contained in the description. Only the title and description fields are required.</h4>
+    <!-- Details -->
+    <div class="form-control">
+      <label for="name" id="label-name">
+        Job Title*
+      </label>
+
+      <!-- Input Type Text -->
+      <input type="text" id="name" placeholder="Enter the job title" />
+    </div>
+
+    <div class="form-control">
+      <label for="job-description">
+        Job Description*
+      </label>
+
+      <!-- multi-line text input control -->
+      <textarea name="jobDescription" class="multiline" id="job-description" placeholder="Enter the job description"></textarea>
+    </div>
+
+    <div class="form-control">
+      <label for="company-description">
+        Company Description
+      </label>
+
+      <!-- multi-line text input control -->
+      <textarea name="companyDescription" class="multiline" id="company-description" placeholder="Enter the company description"></textarea>
+    </div>
+
+    <div class="form-control">
+      <label for="location" id="label-location">
+        Location
+      </label>
+      <input type="text" id="location" placeholder="E.g. Philadelphia, PA, US" />
+    </div>
+
+    <div class="form-control">
+      <label for="industry" id="label-industry">
+        Industry
+      </label>
+      <input type="text" id="industry" placeholder="E.g. Computer Software; Marketing" />
+    </div>
+
+    <div class="form-control">
+      <label for="employment-type" id="label-employment-type">
+        Employment Type
+      </label>
+      <!-- Dropdown options -->
+      <select name="employment-type" id="employment-type">
+        <option value=""></option>
+        <option value="full-time">full-time</option>
+        <option value="part_time">part-time</option>
+        <option value="temporary">temporary</option>
+        <option value="contract">contract</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="required-experience" id="label-required-experience">
+        Required Experience
+      </label>
+      <!-- Dropdown options -->
+      <select name="required-experience" id="required-experience">
+        <option value=""></option>
+        <option value="internship">Internship</option>
+        <option value="entry">Entry level</option>
+        <option value="mid-senior">Mid-Senior level</option>
+        <option value="associate">Associate</option>
+        <option value="executive">Executive</option>
+        <option value="director">Director</option>
+        <option value="Not Applicable">Not Applicable</option>
+      </select>
+    </div>
+
+
+    <div class="form-control">
+      <label for="required-education" id="label-required-education">
+        Required Education
+      </label>
+      <!-- Dropdown options -->
+      <select name="required-education" id="required-education">
+        <option value=""></option>
+        <option value="vocational">Unspecified</option>
+        <option value="high-school">High School or equivalent</option>
+        <option value="professional">Professional</option>
+        <option value="vocational">Vocational</option>
+        <option value="certification">Certification</option>
+        <option value="associate">Associate Degree</option>
+        <option value="bachelors">Bachelor's Degree</option>
+        <option value="masters">Master's Degree</option>
+        <option value="doctorate">Doctorate</option>
+      </select>
+    </div>
+    <div id="btnContainer">
+      <button type="submit" value="submit" class="login100-form-btn">
+        Submit
+      </button>
+    </div>
+  </form>
+  <script src="/js/index.js"></script>
+</body>
+
+</html>
