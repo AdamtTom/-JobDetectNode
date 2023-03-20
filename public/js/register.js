@@ -4,7 +4,7 @@ function registerHandler(data) {
         document.getElementById("registerErrorMessage").style.display = 'block';
         document.getElementById("registerErrorMessage").innerHTML = data.errMsg
     } else {
-        // window.location = '/'
+        window.location = '/'
     }
 }
 

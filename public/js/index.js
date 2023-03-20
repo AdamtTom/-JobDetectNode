@@ -39,3 +39,38 @@ const switchToggle = document.querySelector('#switch-toggle');
 switchToggle.addEventListener('change', function() {
   toggleMagnify()
 });
+
+function responseHandler(data) {
+    document.getElementById("loader").style.display = 'none'
+    if (data.fake)
+        document.getElementById("results-label").innerHTML = `There is a ${data.proba}% chance that this job posting ${'<span class="red-highlight">IS</span>' } Fake.`
+    else
+        document.getElementById("results-label").innerHTML = `There is a ${data.proba}% chance that this job posting ${'<span class="green-highlight">IS NOT</span>' } Fake.`
+}
+
+$('#submitBtn').click(() => {
+    const formData = $('#form').serializeArray().reduce((function(acc, val) {
+        acc[val.name] = val.value;
+        return acc;
+      }), {});
+      console.log(formData)
+
+    let {title, description} = document.form
+    if(!title.reportValidity() || !description.reportValidity()){
+        return;
+    }
+    document.getElementById("results").style.display = 'flex'
+    document.getElementById("loader").style.display = 'block'
+    $('#submitBtn').hide();
+
+    $.ajax({
+        url: '/predict',
+        type: 'POST',
+        data: formData,
+        success: responseHandler
+    })
+});
+
+$('#check').click(function() {
+    $('#switch-toggle').toggle();
+  });

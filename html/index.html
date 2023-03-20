@@ -7,9 +7,7 @@
   <title>JobDetect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 
 <body>
@@ -18,26 +16,28 @@
       <img src="/images/download.svg" width="55px"/>
       <label class="logo">JobDetect</label>
     </div>
-    
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
     <ul>
       <li><a href="/">Detect</a></li>
       <li><a href="/account">Account</a></li>
       <li><a href="/logout">Logout</a></li>
     </ul>
-    <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
   </nav>
+<div>
   <label class="switch" id="switch-toggle">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+</div>
+  
   <h1 id="title">Is this job posting <span class="highlight">Fake?</span></h1>
 
   <!-- Create Form -->
-  <form id="form" method="POST">
-    <h4 style="color: #9152f8; font-family: Poppins-Regular; margin-bottom: 3vh">Instructions: Enter the job title below and paste the entire text from the job posting in the <i>job description</i> field. Only fill the other fields if the information is not contained in the description. Only the title and description fields are required.</h4>
+  <form id="form" name="form">
+    <h4 style="color: #9152f8; font-family: Poppins-Regular; margin-bottom: 3vh">Instructions: Enter the job title below and paste the entire text from the job posting in the <i>Job Description</i> field. If there is a company description avaliable, enter it in the 3rd input field.</h4>
     <!-- Details -->
     <div class="form-control">
       <label for="name" id="label-name">
@@ -45,7 +45,7 @@
       </label>
 
       <!-- Input Type Text -->
-      <input type="text" name="title" id="title" placeholder="Enter the job title" />
+      <input type="text" name="title" id="title" placeholder="Enter the job title" required/>
     </div>
 
     <div class="form-control">
@@ -54,7 +54,7 @@
       </label>
 
       <!-- multi-line text input control -->
-      <textarea name="jobDescription" class="multiline" id="job-description" placeholder="Enter the job description"></textarea>
+      <textarea required name="jobDescription" class="multiline" id="description" placeholder="Enter the job description"></textarea>
     </div>
 
     <div class="form-control">
@@ -66,7 +66,7 @@
       <textarea name="companyDescription" class="multiline" id="company-description" placeholder="Enter the company description"></textarea>
     </div>
 
-    <div class="form-control">
+    <!-- <div class="form-control">
       <label for="location" id="label-location">
         Location
       </label>
@@ -84,7 +84,6 @@
       <label for="employment-type" id="label-employment-type">
         Employment Type
       </label>
-      <!-- Dropdown options -->
       <select name="employment-type" id="employment-type">
         <option value=""></option>
         <option value="full-time">full-time</option>
@@ -99,7 +98,6 @@
       <label for="required-experience" id="label-required-experience">
         Required Experience
       </label>
-      <!-- Dropdown options -->
       <select name="required-experience" id="required-experience">
         <option value=""></option>
         <option value="internship">Internship</option>
@@ -117,7 +115,6 @@
       <label for="required-education" id="label-required-education">
         Required Education
       </label>
-      <!-- Dropdown options -->
       <select name="required-education" id="required-education">
         <option value=""></option>
         <option value="unspecified">Unspecified</option>
@@ -130,15 +127,19 @@
         <option value="Master's Degree">Master's Degree</option>
         <option value="doctorate">Doctorate</option>
       </select>
-    </div>
+    </div> -->
     <div id="btnContainer">
-      <button type="submit" value="submit" class="login100-form-btn">
+      <button id="submitBtn" type="button" value="submit" class="login100-form-btn">
         Submit
       </button>
     </div>
+    <div id="results">
+      <label id="results-label"></label>
+      <div class="lds-dual-ring" id="loader"></div>
+    </div>
   </form>
   <div class="magnifier"></div>
-
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
   <script src="/js/index.js"></script>
 </body>
 

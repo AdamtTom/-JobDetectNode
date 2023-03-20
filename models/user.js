@@ -14,6 +14,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  predictions: {
+    type: [{
+      text: String,
+      fake: Boolean,
+      proba: Number
+    }],
+    default: []
+  }
 }, {timestamps: true})
 
 module.exports = mongoose.model('users', userSchema)

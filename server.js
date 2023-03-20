@@ -71,17 +71,33 @@ app.get('/logout', (req, res) =>{
     return res.redirect('/login')
 } )
 
-app.post('/', async (req, res) => {
+app.post('/predict', async (req, res) => {
     text = ""
+    formattedText = ""
     for (const property in req.body) {
         text += req.body[property] + " "
+        formattedText += property + ": " + req.body[property] + "&#13;&#10;&#13;&#10;"
       }
     response = await axios.post('http://jobdetective.pythonanywhere.com/predict', {text: text})
     const {preds, probas} = response.data
-    if (preds[0] == 0)
-        res.json({fake: false, proba: Math.round(probas[0][0] * 100)})
-    else
-        res.json({fake: true, proba: Math.round(probas[0][1] * 100)})
+
+    if (preds[0] == 0){
+        fake = false; index = 0;
+        index = 0
+    } 
+    else {
+       fake = true
+       index = 1
+    } 
+    
+    prediction = {
+        fake: fake, 
+        proba: Math.round(probas[0][index] * 100),
+        text: formattedText
+    }
+    await User.updateOne({email: req.session.user.email}, {$push: {predictions: prediction}})
+    res.json({fake: fake, proba: Math.round(probas[0][index] * 100)})
+
 })
 
 app.post('/register', isLoggedOut, async (req, res) => {
@@ -106,6 +122,11 @@ app.post('/login', isLoggedOut, async (req, res) => {
     req.session.user = user;
     req.session.isLoggedIn = true;
     return res.json({redirect: '/'})
+})
+
+app.get('/sessionInfo', isLoggedIn, (req, res) => {
+    const {name, email, predictions} = req.session.user
+    res.json({name: name, email: email, predictions:predictions})
 })
 
 app.get('*', (req, res) => {

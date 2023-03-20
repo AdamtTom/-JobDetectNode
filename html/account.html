@@ -6,10 +6,8 @@
   <meta charset="utf-8">
   <title>JobDetect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/account.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
 </head>
 
 <body>
@@ -18,16 +16,15 @@
       <img src="/images/download.svg" width="55px"/>
       <label class="logo">JobDetect</label>
     </div>
-    
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
     <ul>
       <li><a href="/">Detect</a></li>
       <li><a href="/account">Account</a></li>
       <li><a href="/logout">Logout</a></li>
     </ul>
-    <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
   </nav>
   <h1 id="title">Account <span class="highlight">Details</span></h1>
 
@@ -37,17 +34,19 @@
       <label for="name" id="label-name">
         Name
       </label>
-      <input type="text" id="name" value="Hello World" readonly/>
+      <input type="text" id="name" value="" readonly/>
     </div>
 
     <div class="form-control">
         <label for="email" id="label-email">
           Email
         </label>
-        <input type="text" id="email" value="Hello World" readonly/>
-      </div>  
+        <input type="text" id="email" value="" readonly/>
+      </div>
+    <div id="predictions"></div>  
   </form>
-  <script src="/js/index.js"></script>
+  <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <script src="/js/account.js"></script>
 </body>
 
 </html>
