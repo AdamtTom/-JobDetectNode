@@ -17,10 +17,6 @@ function toggleMagnify() {
   }
 }
 
-// Function to deactivate the magnifying lens
-function deactivateMagnify() {
-  
-}
 
 window.addEventListener('mousemove', function(e) {
     if (magnifyActive){

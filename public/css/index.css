@@ -28,6 +28,7 @@
 
 body {
     font-family: Poppins-Medium;
+    overflow-x: hidden;
 }
 
 nav {
