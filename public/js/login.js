@@ -1,6 +1,5 @@
 
 function loginHandler(data) {
-    console.log(data)
     if (data.errMsg) {
         document.getElementById("loginErrorMessage").style.display = 'block';
         document.getElementById("loginErrorMessage").innerHTML = data.errMsg

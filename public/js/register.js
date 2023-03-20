@@ -14,7 +14,6 @@ $('#registerBtn').click(() => {
         return acc;
       }), {});
 
-    // console.log(fieldPair);
     let {name, email, password, repeat_password} = document.form
     if(!name.reportValidity() || !email.reportValidity() || !password.reportValidity() || !repeat_password.reportValidity()){
         return;

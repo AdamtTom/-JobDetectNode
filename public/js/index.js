@@ -53,7 +53,6 @@ $('#submitBtn').click(() => {
         acc[val.name] = val.value;
         return acc;
       }), {});
-      console.log(formData)
 
     let {title, description} = document.form
     if(!title.reportValidity() || !description.reportValidity()){
