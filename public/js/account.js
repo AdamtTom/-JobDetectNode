@@ -3,7 +3,7 @@ function responseHandler(data){
     $('#email').attr('value', data.email)
     newElements = ''
     data.predictions.forEach((pred, index) => {
-        if (pred.fake) result = `${'<span class="red-highlight">Fake</span>'} ${pred.proba}% chance`
+        if (pred.fake) result = `${'<span class="red-highlight">Fake</span>'} (${pred.proba}% chance)`
         else result =  `${'<span class="green-highlight">Not Fake</span>'} (${pred.proba}% chance)`
         newElements += `<div class="form-control">
         <label class="prediction-title">Prediction ${index+1}</label>
