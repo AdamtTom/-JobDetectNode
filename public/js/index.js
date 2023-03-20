@@ -2,6 +2,7 @@ const magnify = 100; // Magnification radius in pixels
 let magnifyActive = true; // Whether magnifying lens is active or not
 const magnifier = document.querySelector('.magnifier');
 const body = document.querySelector('body');
+const icon = document.querySelector('.material-symbols-outlined');
 
 // Function to activate the magnifying lens
 function toggleMagnify() {
@@ -9,11 +10,12 @@ function toggleMagnify() {
     magnifyActive = false;
     magnifier.style.display = 'none';
     body.style.cursor = 'auto'
-
+    icon.style.fontVariationSettings = "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 48";
   } else {
     magnifyActive = true;
     magnifier.style.display = 'block';
     body.style.cursor = 'none'
+    icon.style.fontVariationSettings = "'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48";
   }
 }
 
@@ -31,8 +33,8 @@ window.addEventListener('mousemove', function(e) {
 
 
 // Event listener for switch toggle
-const switchToggle = document.querySelector('#switch-toggle');
-switchToggle.addEventListener('change', function() {
+
+icon.addEventListener('click', function() {
   toggleMagnify()
 });
 

@@ -9,8 +9,6 @@ const dotenv = require("dotenv")
 dotenv.config();
 require('express-async-errors');
 
-
-// require model and load it; clear DB when server is rebooted
 const User = require('./models/user.js')
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
@@ -50,11 +48,23 @@ function isLoggedOut(req, res, next) {
     }
 }
 
-app.get('/', isLoggedIn, (req, res) => {
+/**
+ * 
+ * This function stops the browsers from storing protected pages on cache
+ * -User cannot backspace to previous page if page is protected(Eg. not logged in).
+ */
+function setHeaders(req, res, next) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    res.setHeader("Expires", "0"); // Proxies.
+    return next();
+}
+
+app.get('/', isLoggedIn, setHeaders, (req, res) => {
     res.sendFile(__dirname + '/html/index.html')
 })
 
-app.get('/account', isLoggedIn, (req, res) => {
+app.get('/account', isLoggedIn, setHeaders, (req, res) => {
     res.sendFile(__dirname + '/html/account.html')
 })
 
@@ -130,9 +140,7 @@ app.get('/sessionInfo', isLoggedIn, (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.status(404).json({
-    msg: 'Improper route. Check API docs plz.'
-  })
+  res.send('<h1>404 NOT FOUND</h1>')
 })
 
 app.use(handleErr)
