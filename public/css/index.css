@@ -36,6 +36,11 @@ body {
     overflow-x: hidden;
 }
 
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
 nav {
     background: #9152f8;
     text-transform: uppercase;
