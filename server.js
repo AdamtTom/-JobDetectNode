@@ -134,8 +134,9 @@ app.post('/login', isLoggedOut, async (req, res) => {
     return res.json({redirect: '/'})
 })
 
-app.get('/sessionInfo', isLoggedIn, (req, res) => {
-    const {name, email, predictions} = req.session.user
+app.get('/sessionInfo', isLoggedIn, async (req, res) => {
+    user = await User.findOne({email: req.session.user.email})
+    const {name, email, predictions} = user
     res.json({name: name, email: email, predictions:predictions})
 })
 
